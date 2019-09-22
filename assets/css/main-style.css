@@ -1,0 +1,40 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0; 
+}
+
+.variant-input {
+    padding-bottom: 4px;
+}
+
+.mTable {
+    box-shadow: 1px 3px 3px 2px rgba(83, 81, 81, 0.644)
+}
+
+a {
+    color: inherit;
+}
+
+.formName, .formName:hover {
+    text-decoration: none;
+}
+
+.product-box {
+    border-radius: 4px;
+}
+
+.product-box:hover {
+    z-index: 4;
+    box-shadow: -2px -2px 8px 1px, 2px 2px 8px 1px, 2px -2px 8px 1px, -2px 2px 8px 1px #43464ad9;
+}
+
+.money-underline {
+    text-decoration: underline;
+}
+
+.table td {
+    max-width: 300px;
+    overflow-wrap: break-word;
+}

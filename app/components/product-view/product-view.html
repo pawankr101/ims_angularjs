@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" ng-repeat="prod in productInventory">
+                <a class="formName" ui-sref="app.productDescription({productidd: prod.ProductId})">
+                    <div class="card">
+                        <div class="card-body product-box">
+                            <div class="card-title">
+                                <h4 class="text-capitalize" ng-bind="prod.ProductName"></h4>
+                            </div>
+                            <img src="assets/images/dellLaptop.jpg" class="img-fluid " alt="product">
+                            <p class="card-text text-right text-success"><span ng-if="prod.Discount">Discount: <span ng-bind="prod.Discount"></span>%</span></p>
+                            <p class="card-text text-right text-warning"><span ng-if="prod.Price">Price(&#8377;): <span ng-bind="prod.Price"></span></span></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

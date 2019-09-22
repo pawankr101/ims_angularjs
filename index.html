@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inventory Management</title>
+        <link rel="stylesheet" href="assets/lib/ng-tags-input/ng-tags-input.min.css">
+        <link rel="stylesheet" href="assets/lib/ng-tags-input/ng-tags-input.bootstrap.min.css">
+        <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/lib/fontawesome/css/fa-svg-with-js.css">
+        <link rel="stylesheet" href="assets/lib/ng-toaster/css/toaster.min.css">
+        <link rel="stylesheet" href="assets/css/main-style.css">
+    </head>
+    <body>
+        <main ui-view></main>
+
+        <div ng-controller="apptoaster">
+            <toaster-container toaster-options="{'close-button': true, 'time-out': 5000,'position-class': 'toast-top-right'}">
+            </toaster-container>
+        </div>
+
+        <script src="assets/lib/jQuery/jquery-3.3.1.min.js"></script>
+        <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="assets/lib/angular/angular.min.js"></script>
+        <script src="assets/lib/angular/angular-ui-router.min.js"></script>
+        <script src="assets/lib/ocLazyLoad/ocLazyLoad.min.js"></script>
+        <script src="assets/lib/angular/angular-animate.min.js"></script>
+        <script src="assets/lib/lodash/lodash.js"></script>
+        <script src="assets/lib/ng-tags-input/ng-tags-input.min.js"></script>
+        <script src="assets/lib/fontawesome/js/fontawesome-all.min.js"></script>
+        <script src="assets/lib/ng-toaster/js/toaster.min.js"></script>
+
+        <script src="app/app.js"></script>
+        <script src="app/app.routes.js"></script>
+        <script src="app/app.lazy.config.js"></script>
+
+        <!-- <script src="app/service/httpMyJson.service.js"></script>
+        <script src="app/components/products/products.service.js"></script>
+        <script src="app/components/inventory/inventory.service.js"></script>
+        <script src="app/components/product-view/product-view.service.js"></script>
+        <script src="app/components/product-description/productDescription.service.js"></script> -->
+
+        <script src="app/main/main.controller.js"></script>
+        <script src="app/shared/layout/header/header.controller.js"></script>
+        <!-- <script src="app/components/products/products.controller.js"></script>
+        <script src="app/components/inventory/inventory.controller.js"></script>
+        <script src="app/components/product-view/product-view.controller.js"></script>
+        <script src="app/components/product-description/productDescription.controller.js"></script> -->
+    </body>
+</html>

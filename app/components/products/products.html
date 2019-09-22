@@ -1,0 +1,123 @@
+<div class="container-fluid">
+    <br>
+    <div class="container">
+        <div id="accordion" role="tablist">
+            <div class="card">
+                <a class="collapsed formName text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <h4 class="card-header text-center" ng-bind="formName"></h4>
+                </a>
+                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" ng-focus="product.ProductId">
+                    <div class="card-body">
+                        <form #prodForm ng-submit="saveProduct()">
+                            <div class="form-group row">
+                                <label for="prodName" class="col-sm-2 offset-sm-1 col-form-label">Product Name :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="prodName" placeholder="Product Name" ng-model="product.ProductName">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="variant" class="col-sm-2 offset-sm-1 col-form-label">Variant :</label>
+                                <div class="col-sm-8">
+                                    <div>
+                                        <div class="input-group variant-input" ng-repeat="var in product.Variant">
+                                            <input type="text" class="form-control w-25" id="variant" placeholder="Variant Name" ng-model="var.VariantName">
+                                            <tags-input class="form-control w-50 input-group-append" ng-model="var.VariantValue"  placeholder="Variant value"></tags-input>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-info" type="button" ng-click="addVarrientBox()" ng-if="$last">+</button>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger" type="button" ng-click="removeVarrientBox($index)" ng-if="(product.Variant.length > 1)">-</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="discount" class="col-sm-2 offset-sm-1 col-form-label">Discount :</label>
+                                <div class="input-group col-sm-3">
+                                    <input type="number" class="form-control" id="discount" placeholder="Discount" ng-model="product.Discount">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                                <label for="sku" class="col-sm-1 offset-sm-1 col-form-label">SKU :</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="sku" placeholder="SKU" ng-model="product.Sku">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="discription" class="col-sm-2 offset-sm-1 col-form-label">Discription :</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" id="discription" rows="1" placeholder="Discription" ng-model="product.Discription"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="shipMethod" class="col-sm-2 offset-sm-1 col-form-label">Shiping Method :</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="shipMethod" placeholder="shipMethod" ng-model="product.ShipingMethod">
+                                        <option value="Expedite">Expedite</option>
+                                        <option value="Normal">Normal</option>
+                                    </select>
+                                </div>
+                                <label for="cod" class="col-sm-1 offset-sm-1 col-form-label">COD :</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="cod" placeholder="COD" ng-model="product.Cod">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-sm-9 col-sm-1">
+                                    <button type="submit" class="btn btn-success" data-toggle="collapse" href="#collapseOne" ng-disabled="(prodForm.valid && prodForm.dirty)">Submit</button>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="button" class="btn btn-danger" data-toggle="collapse" href="#collapseOne" ng-click="onCancel()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <table class="table table-hover mTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Variant</th>
+                    <th>Discount</th>
+                    <th>Sku</th>
+                    <th>Description</th>
+                    <th>Shiping Method</th>
+                    <th>Cod</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prod in products">
+                    <td class="text-capitalize"><strong><span ng-bind="prod.ProductName"></span></strong></td>
+                    <td>
+                        <span #variant ng-repeat="var in prod.Variant" ng-init="var_index = $index">
+                            <strong class="text-capitalize"><span ng-bind="var.VariantName"></span>: </strong><span ng-repeat="varVal in var.VariantValue" ng-init="index = $index"><span ng-bind="varVal.text"></span><span ng-if="index != var.VariantValue.length-1">, </span></span><span ng-if="var_index != prod.Variant.length-1"><hr></span>
+                        </span>
+                    </td>
+                    <td ng-bind="prod.Discount"></td>
+                    <td ng-bind="prod.Sku"></td>
+                    <td ng-bind="prod.Discription"></td>
+                    <td ng-bind="prod.ShipingMethod"></td>
+                    <td ng-bind="prod.Cod"></td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseOne" ng-click="editProduct(prod.ProductId)"><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-outline-danger" ng-click="deleteProduct(prod.ProductId)"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+</div>

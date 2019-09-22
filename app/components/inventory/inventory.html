@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 offset-sm-8">
+                <select class="form-control" placeholder="COD" ng-model="productidd" ng-change="selectProduct(productidd)">
+                    <option ng-repeat="prod in productVariants" value="{{prod.ProductId}}" ng-bind="prod.ProductName"></option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <h4>Product<span ng-if="selectedVariant.ProductName">: <span ng-bind="electedVariant.ProductName"></span></span></h4>
+            <table class="table mTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>variant</th>
+                        <th>price</th>
+                        <th>stock</th>
+                        <th>isDefault</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="varComb in selectedVariant.VariantArray">
+                        <td ng-bind="varComb.VariantCombination"></td>
+                        <td>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="Price" ng-model="varComb.Price">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">&#8377;</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" type="number" placeholder="Stock" ng-model="varComb.Stock">
+                        </td>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control" name="default" value="true" ng-model="varComb.isDefault" ng-click="setDefault(varComb.VariantId)">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" ng-if="productVariants.length>0">
+                <div class="col-sm-1 offset-sm-8"><button type="button" class="btn btn-warning" ng-click="resetVariant(selectedVariant.ProductId)">Reset</button></div>
+                <div class="col-sm-1"><button type="button" class="btn btn-success" ng-click="updateVariant()">Submit</button></div>
+                <div class="col-sm-1"><button type="button" class="btn btn-danger" ng-click="onCancel()">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

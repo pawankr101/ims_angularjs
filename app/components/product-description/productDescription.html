@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 offset-col-1">
+                <img src="assets/images/dellLaptop.jpg" class="img-fluid " alt="product">
+            </div>
+            <div class="col-sm-6">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <h4 class="text-capitalize" ng-bind="productDetail.ProductName"></h4>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <p ng-bind="productDetail.Discription"></p>
+                    </div>
+                    <br>
+                    <div class="row" ng-repeat="var in productDetail.Variant" ng-init="index = $index">
+                        <div class="col">
+                            <h6 ng-bind="var.VariantName">:</h6>
+                            <div class="row">
+                                <div class="col-3" ng-repeat="varVal in var.VariantValue">
+                                    <button class="btn btn-outline-dark" ng-class="{'active':varVal.activeButton=='true'}" ng-click="selectVariant(index, varVal.text)" ng-bind="varVal.text"></button>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 offset-7 text-right">
+                            <p class="text-warning money-underline"><strong>Price: <span ng-bind="selectedProduct.Price"></span> &#8377;</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-7 text-right">
+                            <button class="btn btn-success" ng-click="onBuy()" ng-disabled="selectedProduct.Stock<1">Buy Now</button>
+                        </div>
+                        <div class="col-2 text-right">
+                            <button class="btn btn-danger" ng-click="onBack()">Back</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
